@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ED1785A5-39E2-4591-A4DA-E91B0170F9FE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CSharpToolkit</RootNamespace>
+    <AssemblyName>CSharpToolkit</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IO\FileName.cs" />
+    <Compile Include="IO\PathHelper.cs" />
+    <Compile Include="Testing\ControlBlock.cs" />
+    <Compile Include="Testing\DirectoryControlBlockContainer.cs" />
+    <Compile Include="Testing\DirectoryControlBlock.cs" />
+    <Compile Include="Testing\ControlBlockIterator.cs" />
+    <Compile Include="Testing\DirectoryIdentifier.cs" />
+    <Compile Include="Testing\Directory.cs" />
+    <Compile Include="Testing\Disk.cs" />
+    <Compile Include="Testing\DiskDriver.cs" />
+    <Compile Include="Testing\FileControlBlock.cs" />
+    <Compile Include="Testing\FileControlBlockContainer.cs" />
+    <Compile Include="Testing\FileIdentifier.cs" />
+    <Compile Include="Testing\IdentifierHelper.cs" />
+    <Compile Include="Testing\File.cs" />
+    <Compile Include="Testing\IDiskDriver.cs" />
+    <Compile Include="Testing\MemoryStreamProxy.cs" />
+    <Compile Include="Testing\StreamCopier.cs" />
+    <Compile Include="Testing\IOFactory.cs" />
+    <Compile Include="TypeBuilders\IFactory.cs" />
+    <Compile Include="TypeBuilders\IGetter.cs" />
+    <Compile Include="IO\DirectoryAdapter.cs" />
+    <Compile Include="IO\FileSystemInfoAdapter.cs" />
+    <Compile Include="IO\FileSystem.cs" />
+    <Compile Include="IO\FileAdapter.cs" />
+    <Compile Include="IO\IDirectory.cs" />
+    <Compile Include="IO\IFile.cs" />
+    <Compile Include="IO\IFileSystemInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeBuilders\Seams.cs" />
+    <Compile Include="Testing\DependencyContainer.cs" />
+    <Compile Include="Testing\EmptyGetter.cs" />
+    <Compile Include="Testing\For.cs" />
+    <Compile Include="Testing\SeamsExt.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
