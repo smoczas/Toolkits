@@ -52,6 +52,7 @@
     <Compile Include="Testing\Directory.cs" />
     <Compile Include="Testing\Disk.cs" />
     <Compile Include="Testing\DiskDriver.cs" />
+    <Compile Include="Testing\DiskHelpers.cs" />
     <Compile Include="Testing\FileControlBlock.cs" />
     <Compile Include="Testing\FileControlBlockContainer.cs" />
     <Compile Include="Testing\FileIdentifier.cs" />
