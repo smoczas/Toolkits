@@ -64,6 +64,7 @@
     <Compile Include="DependencyContainerTests.cs" />
     <Compile Include="DirectoryControlBlockContainerTests.cs" />
     <Compile Include="DirectoryIdentifierTests.cs" />
+    <Compile Include="DiskDriverTests\CustomDataTests.cs" />
     <Compile Include="DiskDriverTests\DirectoryMoveTests.cs" />
     <Compile Include="DiskDriverTests\DiskDriverTests.cs" />
     <Compile Include="DiskDriverTests\DirectoryCreateTests.cs" />

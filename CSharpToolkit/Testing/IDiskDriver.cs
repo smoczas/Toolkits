@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace CSharpToolkit.Testing
@@ -30,6 +31,7 @@ namespace CSharpToolkit.Testing
         DateTime GetLastAccessTime(DirectoryIdentifier id);
         void SetLastAccessTime(DirectoryIdentifier id, DateTime time);
 
+        Dictionary<object, object> GetCustomData(FileIdentifier id);
 
         Directory GetDirectory(string path);
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using CSharpToolkit.IO;
 
@@ -34,6 +35,8 @@ namespace CSharpToolkit.Testing
         public DateTime LastAccessTimeUtc { get => DateTime.SpecifyKind(LastAccessTime, DateTimeKind.Utc); set => LastAccessTime = DateTime.SpecifyKind(value, DateTimeKind.Local); }
         public DateTime CreationTime { get => _driver.GetCreationTime(_identifier); set => _driver.SetCreationTime(_identifier, value); }
         public DateTime CreationTimeUtc { get => DateTime.SpecifyKind(CreationTime, DateTimeKind.Utc); set => CreationTime = DateTime.SpecifyKind(value, DateTimeKind.Local); }
+
+        public Dictionary<object, object> CustomData { get => _driver.GetCustomData(_identifier); }
 
         public StreamWriter AppendText()
         {

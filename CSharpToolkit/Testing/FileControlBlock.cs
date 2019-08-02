@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace CSharpToolkit.Testing
@@ -8,12 +9,15 @@ namespace CSharpToolkit.Testing
         public MemoryStream Stream { get; set; }
         public FileIdentifier Identifier { get; }
         public bool IsReadOnly { get; set; }
+        public Dictionary<object, object> CustomData { get; set; }
+
 
         public FileControlBlock(FileIdentifier id)
         {
             Identifier = id;
             Stream = new MemoryStream();
             LastWriteTime = CreationTime = LastAccessTime = DateTime.Now;
+            CustomData = new Dictionary<object, object>();
         }
 
         public FileControlBlock Clone(FileIdentifier newId)

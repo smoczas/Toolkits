@@ -554,6 +554,12 @@ namespace CSharpToolkit.Testing
             return result;
         }
 
+        public Dictionary<object, object> GetCustomData(FileIdentifier id)
+        {
+            var ctrlBlock = FindFileControlBlock(id);
+            return ctrlBlock.CustomData;
+        }
+
         private FileControlBlock FindFileControlBlock(FileIdentifier id,
             bool throwIfFileNotFound = true,
             bool throwIfDirNotFound = true)
