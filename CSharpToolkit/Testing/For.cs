@@ -6,12 +6,12 @@ namespace CSharpToolkit.Testing
     {
         public For(DependencyContainer dc)
         {
-            _dependencyContainer = dc;
+            _container = dc;
         }
 
         public void Register(Func<object[], T> factoryMethod)
         {
-            _dependencyContainer.DependencyFactoryMethods[typeof(T)] = args => factoryMethod(args);
+            _container.Registered[typeof(T)] = args => factoryMethod(args);
         }
 
         public void Register(T value)
@@ -21,15 +21,22 @@ namespace CSharpToolkit.Testing
 
         public T Get(object[] args)
         {
-            if(_dependencyContainer.DependencyFactoryMethods.TryGetValue(typeof(T), out var factMethod))
+            var result = default(T);
+            var dependencyType = typeof(T);
+            if(_container.Registered.TryGetValue(typeof(T), out var factMethod))
             {
-                return (T)factMethod(args);
+                result = (T)factMethod(args);
             }
 
-            var result = (T)_dependencyContainer?.UnregisteredDependencyFactoryMethod(typeof(T), args);
+            if (result != null)
+            {
+                return result;
+            }
+
+            result = (T)_container?.UnknownDependencyFactoryMethod(typeof(T), args);
             return result ?? throw new NotSupportedException($"Dependency for {typeof(T).Name} is not registered");
         }
 
-        private readonly DependencyContainer _dependencyContainer;
+        private readonly DependencyContainer _container;
     }
 }

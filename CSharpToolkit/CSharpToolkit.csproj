@@ -49,7 +49,7 @@
     <Compile Include="Testing\DirectoryControlBlock.cs" />
     <Compile Include="Testing\ControlBlockIterator.cs" />
     <Compile Include="Testing\DirectoryIdentifier.cs" />
-    <Compile Include="Testing\Directory.cs" />
+    <Compile Include="Testing\FakeDirectory.cs" />
     <Compile Include="Testing\Disk.cs" />
     <Compile Include="Testing\DiskDriver.cs" />
     <Compile Include="Testing\DiskHelpers.cs" />
@@ -57,7 +57,7 @@
     <Compile Include="Testing\FileControlBlockContainer.cs" />
     <Compile Include="Testing\FileIdentifier.cs" />
     <Compile Include="Testing\IdentifierHelper.cs" />
-    <Compile Include="Testing\File.cs" />
+    <Compile Include="Testing\FakeFile.cs" />
     <Compile Include="Testing\IDiskDriver.cs" />
     <Compile Include="Testing\MemoryStreamProxy.cs" />
     <Compile Include="Testing\StreamCopier.cs" />

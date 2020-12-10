@@ -33,20 +33,20 @@ namespace CSharpToolkit.Testing
 
         Dictionary<object, object> GetCustomData(FileIdentifier id);
 
-        Directory GetDirectory(string path);
+        FakeDirectory GetDirectory(string path);
 
         void Delete(FileIdentifier id);
         void Delete(DirectoryIdentifier id, bool recurse);
-        File CopyTo(FileIdentifier source, FileIdentifier target, bool overwrite);
+        FakeFile CopyTo(FileIdentifier source, FileIdentifier target, bool overwrite);
         void MoveTo(FileIdentifier source, FileIdentifier target);
         void MoveTo(DirectoryIdentifier source, DirectoryIdentifier target);
 
         Stream OpenFile(FileIdentifier id, FileMode mode, FileAccess access, FileShare share);
 
-        File[] GetFiles(DirectoryIdentifier id, string searchPattern, SearchOption searchOptions);
-        Directory[] GetDirectories(DirectoryIdentifier id, string searchPattern, SearchOption searchOptions);
-        Directory CreateOrGetDirectory(string path);
-        Directory CreateSubdirectory(DirectoryIdentifier id, string path);
+        FakeFile[] GetFiles(DirectoryIdentifier id, string searchPattern, SearchOption searchOptions);
+        FakeDirectory[] GetDirectories(DirectoryIdentifier id, string searchPattern, SearchOption searchOptions);
+        FakeDirectory CreateOrGetDirectory(string path);
+        FakeDirectory CreateSubdirectory(DirectoryIdentifier id, string path);
 
     }
 }

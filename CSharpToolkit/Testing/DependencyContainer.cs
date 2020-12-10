@@ -5,9 +5,9 @@ namespace CSharpToolkit.Testing
 {
     public class DependencyContainer
     {
-        public DependencyContainer()
+        internal DependencyContainer()
         {
-            DependencyFactoryMethods = new Dictionary<Type, Func<object[], object>>();
+            Registered = new Dictionary<Type, Func<object[], object>>();
         }
 
         public For<T> For<T>() where T : class
@@ -15,8 +15,8 @@ namespace CSharpToolkit.Testing
             return new For<T>(this);
         }
 
-        public Func<Type, object[], object> UnregisteredDependencyFactoryMethod { get; set; }
+        public Func<Type, object[], object> UnknownDependencyFactoryMethod { get; set; }
 
-        internal IDictionary<Type, Func<object[], object>> DependencyFactoryMethods { get; }
+        internal IDictionary<Type, Func<object[], object>> Registered { get; }
     }
 }

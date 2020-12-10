@@ -5,19 +5,19 @@ namespace CSharpToolkit.Testing
 {
     class IOFactory 
     {
-        public Func<string, IDiskDriver, File> FileFactoryMethod { get; set; }
+        public Func<string, IDiskDriver, FakeFile> FileFactoryMethod { get; set; }
 
-        public Func<string, IDiskDriver, Directory> DirectoryFactoryMethod { get; set; }
+        public Func<string, IDiskDriver, FakeDirectory> DirectoryFactoryMethod { get; set; }
 
         public IOFactory()
         {
-            DirectoryFactoryMethod = (p, d) => new Directory(p, d);
-            FileFactoryMethod = (p, d) => new File(p, d);
-            _files = new Dictionary<FileIdentifier, File>();
-            _directories = new Dictionary<DirectoryIdentifier, Directory>();
+            DirectoryFactoryMethod = (p, d) => new FakeDirectory(p, d);
+            FileFactoryMethod = (p, d) => new FakeFile(p, d);
+            _files = new Dictionary<FileIdentifier, FakeFile>();
+            _directories = new Dictionary<DirectoryIdentifier, FakeDirectory>();
         }
 
-        public File CreateFile(string path, IDiskDriver driver)
+        public FakeFile CreateFile(string path, IDiskDriver driver)
         {
             var id = FileIdentifier.FromPath(path);
             if (_files.TryGetValue(id, out var result))
@@ -30,7 +30,7 @@ namespace CSharpToolkit.Testing
             return result;
         }
 
-        public Directory CreateDirectory(string path, IDiskDriver driver)
+        public FakeDirectory CreateDirectory(string path, IDiskDriver driver)
         {
             var id = new DirectoryIdentifier(path);
             if (_directories.TryGetValue(id, out var result))
@@ -63,7 +63,7 @@ namespace CSharpToolkit.Testing
             }
         }
 
-        private readonly Dictionary<FileIdentifier, File> _files;
-        private readonly Dictionary<DirectoryIdentifier, Directory> _directories;
+        private readonly Dictionary<FileIdentifier, FakeFile> _files;
+        private readonly Dictionary<DirectoryIdentifier, FakeDirectory> _directories;
     }
 }

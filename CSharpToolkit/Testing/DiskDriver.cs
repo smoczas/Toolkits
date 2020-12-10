@@ -7,9 +7,9 @@ namespace CSharpToolkit.Testing
 {
     internal class DiskDriver : IDiskDriver, IDisposable
     {
-        public Func<string, IDiskDriver, File> FileFactoryMethod { get => _factory.FileFactoryMethod; set => _factory.FileFactoryMethod = value; }
+        public Func<string, IDiskDriver, FakeFile> FileFactoryMethod { get => _factory.FileFactoryMethod; set => _factory.FileFactoryMethod = value; }
 
-        public Func<string, IDiskDriver, Directory> DirectoryFactoryMethod { get => _factory.DirectoryFactoryMethod; set => _factory.DirectoryFactoryMethod = value; }
+        public Func<string, IDiskDriver, FakeDirectory> DirectoryFactoryMethod { get => _factory.DirectoryFactoryMethod; set => _factory.DirectoryFactoryMethod = value; }
 
         public DiskDriver()
         {
@@ -18,7 +18,7 @@ namespace CSharpToolkit.Testing
             _files = new FileControlBlockContainer();
         }
 
-        public File CreateOrGetFile(string path)
+        public FakeFile CreateOrGetFile(string path)
         {
             var id = FileIdentifier.FromPath(path);
             if (!_files.TryGet(id, out _))
@@ -41,7 +41,7 @@ namespace CSharpToolkit.Testing
             return _factory.CreateFile(path, this);
         }
 
-        public Directory CreateOrGetDirectory(string path)
+        public FakeDirectory CreateOrGetDirectory(string path)
         {
             if (Exists(FileIdentifier.FromPath(path)))
             {
@@ -57,7 +57,7 @@ namespace CSharpToolkit.Testing
             return _factory.CreateDirectory(path, this);
         }
 
-        public Directory CreateSubdirectory(DirectoryIdentifier id, string path)
+        public FakeDirectory CreateSubdirectory(DirectoryIdentifier id, string path)
         {
             if (IsAbsolute(path) || IsUnc(path))
             {
@@ -74,12 +74,12 @@ namespace CSharpToolkit.Testing
             return CreateOrGetDirectory(subdirAbsolutePath);
         }
 
-        public File GetFile(string path)
+        public FakeFile GetFile(string path)
         {
             return _factory.CreateFile(path, this);
         }
 
-        public Directory GetDirectory(string path)
+        public FakeDirectory GetDirectory(string path)
         {
             return _factory.CreateDirectory(path, this);
         }
@@ -288,7 +288,7 @@ namespace CSharpToolkit.Testing
             }
         }
 
-        public File CopyTo(FileIdentifier source, FileIdentifier target, bool overwrite)
+        public FakeFile CopyTo(FileIdentifier source, FileIdentifier target, bool overwrite)
         {
             var srcFileCtrlBlock = FindFileControlBlock(source);
             var targFileCtrlBlock = FindFileControlBlock(target, false);
@@ -536,7 +536,7 @@ namespace CSharpToolkit.Testing
             ctrlBlock.LastAccessTime = time;
         }
 
-        public File[] GetFiles(DirectoryIdentifier id, string searchPattern, SearchOption searchOptions)
+        public FakeFile[] GetFiles(DirectoryIdentifier id, string searchPattern, SearchOption searchOptions)
         {
             var dirCtrlBlock = FindDirControlBlock(id);
             ControlBlockIterator it = new ControlBlockIterator(_directories);
@@ -545,7 +545,7 @@ namespace CSharpToolkit.Testing
             return result;
         }
 
-        public Directory[] GetDirectories(DirectoryIdentifier id, string searchPattern, SearchOption searchOptions)
+        public FakeDirectory[] GetDirectories(DirectoryIdentifier id, string searchPattern, SearchOption searchOptions)
         {
             var block = FindDirControlBlock(id);
             ControlBlockIterator it = new ControlBlockIterator(_directories);
