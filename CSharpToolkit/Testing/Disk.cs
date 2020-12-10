@@ -59,22 +59,22 @@ namespace CSharpToolkit.Testing
 
         FakeFile IGetter<string, FakeFile>.Get(string path)
         {
-            return _driver.GetFile(path);
+            return GetFile(path);
         }
 
         IFile IGetter<string, IFile>.Get(string path)
         {
-            return _driver.GetFile(path);
+            return GetFile(path);
         }
 
         IDirectory IGetter<string, IDirectory>.Get(string path)
         {
-            return _driver.GetDirectory(path);
+            return GetDirectory(path);
         }
 
         FakeDirectory IGetter<string, FakeDirectory>.Get(string path)
         {
-            return _driver.GetDirectory(path);
+            return GetDirectory(path);
         }
 
         private readonly DiskDriver _driver;

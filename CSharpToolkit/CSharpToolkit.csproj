@@ -76,7 +76,7 @@
     <Compile Include="Testing\DependencyContainer.cs" />
     <Compile Include="Testing\EmptyGetter.cs" />
     <Compile Include="Testing\For.cs" />
-    <Compile Include="Testing\SeamsExt.cs" />
+    <Compile Include="Testing\EditableSeams.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

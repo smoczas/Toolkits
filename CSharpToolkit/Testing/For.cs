@@ -23,7 +23,7 @@ namespace CSharpToolkit.Testing
         {
             var result = default(T);
             var dependencyType = typeof(T);
-            if(_container.Registered.TryGetValue(typeof(T), out var factMethod))
+            if(_container.Registered.TryGetValue(dependencyType, out var factMethod))
             {
                 result = (T)factMethod(args);
             }
@@ -33,8 +33,8 @@ namespace CSharpToolkit.Testing
                 return result;
             }
 
-            result = (T)_container?.UnknownDependencyFactoryMethod(typeof(T), args);
-            return result ?? throw new NotSupportedException($"Dependency for {typeof(T).Name} is not registered");
+            result = (T)_container?.UnknownDependencyFactoryMethod(dependencyType, args);
+            return result ?? throw new NotSupportedException($"Dependency for {dependencyType.Name} is not registered");
         }
 
         private readonly DependencyContainer _container;

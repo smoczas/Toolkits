@@ -4,9 +4,9 @@ using CSharpToolkit.TypeBuilders;
 
 namespace CSharpToolkit.Testing
 {
-    public class SeamsExt : Seams
+    public class EditableSeams : Seams
     {
-        public SeamsExt()
+        public EditableSeams()
         {
             DependencyContainer = new DependencyContainer();
             var emptyGetter = new EmptyGetter();

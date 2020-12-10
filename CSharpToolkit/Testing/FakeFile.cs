@@ -36,7 +36,7 @@ namespace CSharpToolkit.Testing
         public virtual DateTime CreationTime { get => _driver.GetCreationTime(_identifier); set => _driver.SetCreationTime(_identifier, value); }
         public virtual DateTime CreationTimeUtc { get => DateTime.SpecifyKind(CreationTime, DateTimeKind.Utc); set => CreationTime = DateTime.SpecifyKind(value, DateTimeKind.Local); }
 
-        public virtual Dictionary<object, object> CustomData { get => _driver.GetCustomData(_identifier); }
+        public Dictionary<object, object> CustomData { get => _driver.GetCustomData(_identifier); }
 
         public virtual StreamWriter AppendText()
         {
@@ -110,7 +110,7 @@ namespace CSharpToolkit.Testing
         public void ChangePath(string path)
         {
             _fullName = Path.GetFullPath(path);
-            _identifier = FileIdentifier.FromPath(FullName);
+            _identifier = FileIdentifier.FromPath(_fullName);
         }
 
 
